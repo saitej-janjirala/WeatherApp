@@ -27,9 +27,9 @@ weatherForm.addEventListener('submit', (event) => {
                 document.querySelector("#pressure").textContent=''
             } else {
                 document.querySelector("#error").textContent=''
-                document.querySelector("#temperature").textContent=data.temperature
+                document.querySelector("#temperature").textContent=data.temperature+'°C'
                 document.querySelector("#description").textContent=data.weather
-                document.querySelector("#pressure").textContent=data.pressure
+                document.querySelector("#pressure").textContent="Pressure: "+data.pressure+'p'
             }
         })
     })

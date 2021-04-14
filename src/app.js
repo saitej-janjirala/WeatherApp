@@ -75,7 +75,7 @@ app.get('/weather', (req, res) => {
                 })
             }
             else {
-                getWeatherInfo(data, (error, { weather_descriptions, precip, pressure, temperature } = {}) => {
+                getWeatherInfo(data, (error, { weather_descriptions, precip, pressure, temperature,weather_icons } = {}) => {
                     if (error) {
                         console.log(error)
                         return res.send({
@@ -87,7 +87,8 @@ app.get('/weather', (req, res) => {
                             weather: weather_descriptions[0],
                             precip: precip,
                             pressure: pressure,
-                            temperature: temperature
+                            temperature: temperature,
+                            url:weather_icons[0]
                         })
                     }
                 })
@@ -104,38 +105,6 @@ app.get('*', (req, res) => {
     })
 })
 
-
-// app.get('', (request, response) => {
-//     response.send('hello express')
-// })
-
-// app.get('/saiteja', (request, response) => {
-//     response.send('hey this is saiteja')
-// })
-
-// app.get('/basic', (request, response) => {
-//     response.send({
-//         name: 'saiteja',
-//         age: '20',
-//         job: 'intern'
-//     })
-// })
-
-// app.get('/basic2', (request, response) => {
-//     response.send([{
-//         name: 'saiteja',
-//         age: '20',
-//         job: 'intern'
-//     }, {
-//         name: 'saitej',
-//         age: '21',
-//         job: 'android intern'
-//     }])
-// })
-
-// app.get('/basichtml', (request, response) => {
-//     response.send('<h1>my name is saiteja uzumaki</h1>')
-// })
 
 const request = require('request')
 
@@ -179,6 +148,7 @@ const getWeatherInfo = ({ center } = {}, callback) => {
             callback(response.body.error, undefined)
         }
         else {
+            console.log(response.body.current.weather_icons[0])
             callback(undefined, response.body.current)
         }
     })
@@ -189,3 +159,38 @@ app.listen(port, () => {
 })
 
 
+
+
+
+
+// app.get('', (request, response) => {
+//     response.send('hello express')
+// })
+
+// app.get('/saiteja', (request, response) => {
+//     response.send('hey this is saiteja')
+// })
+
+// app.get('/basic', (request, response) => {
+//     response.send({
+//         name: 'saiteja',
+//         age: '20',
+//         job: 'intern'
+//     })
+// })
+
+// app.get('/basic2', (request, response) => {
+//     response.send([{
+//         name: 'saiteja',
+//         age: '20',
+//         job: 'intern'
+//     }, {
+//         name: 'saitej',
+//         age: '21',
+//         job: 'android intern'
+//     }])
+// })
+
+// app.get('/basichtml', (request, response) => {
+//     response.send('<h1>my name is saiteja uzumaki</h1>')
+// })
