@@ -4,6 +4,7 @@ const hbs = require('hbs')
 const { response } = require('express')
 
 const app = express()
+const port = process.env.PORT || 3000
 const publicDirectoryPath = path.join(__dirname, '../public')
 const viewspath = path.join(__dirname, '../templates/views')
 const partialsPath = path.join(__dirname, '../templates/partials')
@@ -74,19 +75,19 @@ app.get('/weather', (req, res) => {
                 })
             }
             else {
-                getWeatherInfo(data, (error, { weather_descriptions,precip,pressure,temperature } = {}) => {
+                getWeatherInfo(data, (error, { weather_descriptions, precip, pressure, temperature } = {}) => {
                     if (error) {
                         console.log(error)
                         return res.send({
-                           error
+                            error
                         })
                     }
                     else {
-                         res.send({
+                        res.send({
                             weather: weather_descriptions[0],
-                            precip:precip,
-                            pressure:pressure,
-                            temperature:temperature
+                            precip: precip,
+                            pressure: pressure,
+                            temperature: temperature
                         })
                     }
                 })
@@ -103,9 +104,7 @@ app.get('*', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log('Server is up on port 3000.')
-})
+
 // app.get('', (request, response) => {
 //     response.send('hello express')
 // })
@@ -184,5 +183,9 @@ const getWeatherInfo = ({ center } = {}, callback) => {
         }
     })
 }
+
+app.listen(port, () => {
+    console.log('Server is up on port 3000.')
+})
 
 
