@@ -1,0 +1,54 @@
+/* h1 {
+    color: grey;
+}
+
+img {
+    width: 250px;
+} */
+body {
+    color: #333333;
+    font-family: Arial;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+}
+footer{
+    color:#888888;
+    border-top: 1px solid #eeeeee;
+    margin-top: 16px;
+    padding: 16px 0;
+}
+header{
+    margin-top: 16px;
+    margin-bottom: 48px;
+}
+h1{
+    font-size: 60px;
+    margin-bottom: 16px;
+}
+header a{
+    text-decoration: none;
+    color: #888888;
+    margin-right: 16px;
+}
+.potrait{
+    width:300px;
+}
+.main-content{
+    flex-grow: 1;
+}
+input{
+    border: 1px solid #cccccc;
+    padding: 8px;
+}
+button{
+    cursor: pointer;
+    border: 1px solid #888888;
+    background: #888888;
+    padding: 8px;
+    color: white;
+}
