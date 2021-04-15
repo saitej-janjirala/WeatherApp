@@ -30,7 +30,7 @@ app.get('/about', (req, res) => {
 
 app.get('/help', (req, res) => {
     res.render('help', {
-        helpText: 'This is some helpful text.',
+        helpText: 'Contact me from the below Links',
         title: 'Help',
         name: 'saiteja'
     })
@@ -136,7 +136,7 @@ const geoCode = (address, callback) => {
 
 
 const getWeatherInfo = ({ center } = {}, callback) => {
-    const BASE_URL = "http://api.weatherstack.com/current?access_key=68ca3c492fe93dd17c6ed359a109b399&query=" + center[1] + "," + center[0] + "&metrics=m"
+    const BASE_URL = "http://api.weatherstack.com/current?access_key=ce87e868c2b32843563444c0a5b010e2&query=" + center[1] + "," + center[0] + "&metrics=m"
     request({ url: BASE_URL, json: true }, (error, response) => {
 
         // const data=JSON.parse(response.body)
@@ -148,7 +148,6 @@ const getWeatherInfo = ({ center } = {}, callback) => {
             callback(response.body.error, undefined)
         }
         else {
-            console.log(response.body.current.weather_icons[0])
             callback(undefined, response.body.current)
         }
     })
